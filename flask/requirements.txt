@@ -1,0 +1,4 @@
+Flask-Cors
+flask 
+python-dotenv
+
