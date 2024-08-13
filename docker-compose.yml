@@ -16,7 +16,7 @@ services:
     networks:
     - cicd-networks
     ports:
-      - "80:80"
+      - "8080:80"
     depends_on:
       - flask_app
 networks:
