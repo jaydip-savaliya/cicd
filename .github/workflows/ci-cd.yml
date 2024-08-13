@@ -26,11 +26,17 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: build and push flask image
-        run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/flask-app:latest -f flask/Dockerfile .
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/flask-app:latest
+        uses: docker/build-push-action@v3
+        with:
+          context: ./flask
+          file: ./flask/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/flask-app:latest
 
       - name: build and push nginx image
-        run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/nginx:latest -f nginx/Dockerfile .
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/nginx:latest
+        uses: docker/build-push-action@v3
+        with:
+          context: ./nginx
+          file: ./nginx/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/nginx:latest
