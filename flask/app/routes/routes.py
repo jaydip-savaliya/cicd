@@ -15,5 +15,3 @@ def api2_endpoint1():
 @routes_bp.route('/api3/endpoint3', methods=['GET'])
 def api3_endpoint1():
     return jsonify({"message": "Hello from API 3 - Endpoint 1"})
-
-
